@@ -1,0 +1,29 @@
+{
+    "name": "xffecd/laravel-fis",
+    "description": "fis for laravel.",
+    "keywords": ["laravel", "fis", "blade"],
+    "license": "MIT",
+    "homepage": "https://github.com/xffecd/laravel-fis",
+    "support": {
+        "issues": "https://github.com/xffecd/laravel-fis/issues",
+        "source": "https://github.com/xffecd/laravel-fis"
+    },
+    "authors": [
+        {
+            "name": "xffecd",
+            "email": "x_ffecd@hotmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "laravel/framework": ">=5.1.0"
+    },
+    "conflict": {
+        "fex-team/laravel-fis": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fis\\": "src/"
+        }
+    }
+}
