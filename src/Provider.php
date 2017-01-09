@@ -2,6 +2,7 @@
 namespace Fis;
 
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class Provider extends ServiceProvider
 {
@@ -34,11 +35,17 @@ class Provider extends ServiceProvider
     public function boot() {
 
         $this->shareFisToView();
-        $this->extendBlade();
     }
 
     protected function overrideBlade() {
         $app = $this->app;
+
+        $app->bind('view.finder', function($app) {
+            $paths = $app['config']['view.paths'];
+            return new FileFinder($app['files'], $paths);
+        });
+
+        $resolver = $app->make('view.engine.resolver');
 
         $app->singleton('blade.compiler', function ($app) {
             $cache = $app['config']['view.compiled'];
@@ -46,7 +53,6 @@ class Provider extends ServiceProvider
             return new Compiler($app['files'], $cache);
         });
 
-        $resolver = $app->make('view.engine.resolver');
         $resolver->register('blade', function() use ($app) {
             return new Engine($app['blade.compiler'], $app['files']);
         });

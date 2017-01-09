@@ -25,6 +25,5 @@
         "psr-4": {
             "Fis\\": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
