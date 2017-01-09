@@ -40,13 +40,8 @@ class Provider extends ServiceProvider
     protected function overrideBlade() {
         $app = $this->app;
 
-        $app->bind('view.finder', function($app) {
-            $paths = $app['config']['view.paths'];
-            return new FileFinder($app['files'], $paths);
-        });
-
         $resolver = $app->make('view.engine.resolver');
-
+        
         $app->singleton('blade.compiler', function ($app) {
             $cache = $app['config']['view.compiled'];
 

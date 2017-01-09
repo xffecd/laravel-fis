@@ -50,7 +50,7 @@ class Compiler extends BladeCompiler {
         if (!Str::startsWith($expression, '(')) {
             $expression = "($expression)";
         }
-        return "<!--$expression--><?php \$__fis->startScript{$expression}; ?>";
+        return "<?php \$__fis->startScript{$expression}; ?>";
     }
     protected function compileEndscript($expression) {
         return "<?php \$__fis->endScript(); ?>";
